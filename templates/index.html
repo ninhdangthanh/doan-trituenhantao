@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Cost Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medical Cost Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br>
+
+        <label for="sex">Sex (0 for female, 1 for male):</label>
+        <input type="number" name="sex" required><br>
+
+        <label for="bmi">BMI:</label>
+        <input type="number" name="bmi" required><br>
+
+        <label for="children">Number of Children:</label>
+        <input type="number" name="children" required><br>
+
+        <label for="smoker">Smoker (0 for no, 1 for yes):</label>
+        <input type="number" name="smoker" required><br>
+
+        <label for="region">Region</label>
+        <select name="region" id="region">
+            <option selected="selected" value="1">North East</option>
+            <option value="3">North West</option>
+            <option value="2">South East</option>
+            <option value="4">South West</option>
+        </select>
+        <br>
+
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction is defined %}
+        <p>Predicted Medical Cost: {{ prediction }}</p>
+    {% endif %}
+</body>
+</html>
